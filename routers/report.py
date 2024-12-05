@@ -2,6 +2,6 @@ from fastapi import APIRouter, HTTPException, Depends
 
 router = APIRouter()
 
-@router.get("/report")
+@router.get("/")
 def report():
     return "Relatório completo"

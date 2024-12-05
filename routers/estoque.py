@@ -3,11 +3,11 @@ from fastapi import APIRouter, HTTPException, Depends
 
 router = APIRouter()
 
-@router.get("/estoque")
+@router.get("/")
 def estoque():
     return "estoque completo"
 
-@router.get("/estoque/{codigo}")
+@router.get("/{codigo}")
 def estoque(codigo: int):
     return f"produto de codigo: {codigo}"
 

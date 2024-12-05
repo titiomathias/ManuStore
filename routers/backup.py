@@ -2,6 +2,6 @@ from fastapi import APIRouter, HTTPException, Depends
 
 router = APIRouter()
 
-@router.get("/backup")
+@router.get("/")
 def backup():
     return "Backup realiado na data atual"

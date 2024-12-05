@@ -3,11 +3,11 @@ from fastapi import APIRouter, HTTPException, Depends
 
 router = APIRouter()
 
-@router.get("/saida")
+@router.get("/")
 def saida():
     return "todas as saídas"
 
-@router.get("/saida/{codigo}")
+@router.get("/{codigo}")
 def saida(codigo: int):
     return f"Saída de codigo: {codigo}"
 

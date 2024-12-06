@@ -12,5 +12,5 @@ def entrada(codigo: int):
     return f"Entrada de codigo: {codigo}"
 
 @router.post("/")
-def add_entrada(dados: dict):
+async def add_entrada(dados: dict):
     return dados

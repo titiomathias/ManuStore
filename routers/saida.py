@@ -11,3 +11,6 @@ def saida():
 def saida(codigo: int):
     return f"Saída de codigo: {codigo}"
 
+@router.post("/")
+async def add_saida(dados: dict):
+    return dados

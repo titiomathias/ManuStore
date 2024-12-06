@@ -11,4 +11,7 @@ def estoque():
 def estoque(codigo: int):
     return f"produto de codigo: {codigo}"
 
+@router.post("/")
+async def add_estoque(dados: dict):
+    return dados
 

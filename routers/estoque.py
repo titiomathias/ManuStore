@@ -1,5 +1,7 @@
 from fastapi import APIRouter, HTTPException, Depends
-
+from sqlalchemy.orm import Session
+from models import Estoque
+from db import get_db
 
 router = APIRouter()
 
@@ -12,6 +14,15 @@ def estoque(codigo: int):
     return f"produto de codigo: {codigo}"
 
 @router.post("/")
-async def add_estoque(dados: dict):
-    return dados
+async def criar_item_estoque(codigo: str, fornecedor: str, descricao: str, estoque_atual: int, db: Session = Depends(get_db)):
+    novo_item = Estoque(
+        codigo=codigo,
+        fornecedor=fornecedor,
+        descricao=descricao,
+        estoque_atual=estoque_atual
+    )
+    db.add(novo_item)
+    db.commit()
+    db.refresh(novo_item)
+    return novo_item
 

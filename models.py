@@ -35,8 +35,8 @@ class Entrada(Base):
     quantidade = Column(Integer, nullable=False)
     valor_peca = Column(Float, nullable=False)
     frete_peca = Column(Float, nullable=False)
-    lucro_peca = Column(Float, nullable=False)
-    lucro_total = Column(Float, nullable=False)
+    custo_peca = Column(Float, nullable=False)
+    custo_total = Column(Float, nullable=False)
 
     estoque = relationship("Estoque", backref="entradas")
 

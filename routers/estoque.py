@@ -6,12 +6,18 @@ from db import get_db
 router = APIRouter()
 
 @router.get("/")
-def estoque():
-    return "estoque completo"
+def estoque(db: Session = Depends(get_db)):
+    estoque = db.query(Estoque).all()
+    return estoque
 
 @router.get("/{codigo}")
-def estoque(codigo: int):
-    return f"produto de codigo: {codigo}"
+def estoque(codigo: str, db: Session = Depends(get_db)):
+    item = db.query(Estoque).filter(Estoque.codigo == codigo).first()
+
+    if not item:
+        raise HTTPException(status_code=404, detail=f"Produto com código {codigo} não encontrado no estoque.")
+
+    return item
 
 @router.post("/")
 async def criar_item_estoque(codigo: str, fornecedor: str, descricao: str, estoque_atual: int, db: Session = Depends(get_db)):
@@ -25,4 +31,3 @@ async def criar_item_estoque(codigo: str, fornecedor: str, descricao: str, estoq
     db.commit()
     db.refresh(novo_item)
     return novo_item
-

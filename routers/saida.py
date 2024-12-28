@@ -6,7 +6,7 @@ from db import get_db
 router = APIRouter()
 
 @router.get("/")
-def saida(db: Session = Depends(get_db)):
+def saida_all(db: Session = Depends(get_db)):
     saidas = db.query(Saida).all()
     return saidas
 

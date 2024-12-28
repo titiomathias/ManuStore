@@ -6,7 +6,7 @@ from db import get_db
 router = APIRouter()
 
 @router.get("/")
-def estoque(db: Session = Depends(get_db)):
+def estoque_all(db: Session = Depends(get_db)):
     estoque = db.query(Estoque).all()
     return estoque
 

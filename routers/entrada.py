@@ -6,7 +6,7 @@ from db import get_db
 router = APIRouter()
 
 @router.get("/")
-def entrada(db: Session = Depends(get_db)):
+def entrada_all(db: Session = Depends(get_db)):
     entradas = db.query(Entrada).all()
     return entradas
 
